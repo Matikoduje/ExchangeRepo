@@ -18,14 +18,16 @@ $(document).ready(function () {
             var stringCodeWallet = code.toLowerCase() + 'Wallet';
             var roundedSellPrice = Number(value.SellPrice.toFixed(2));
             var roundedPurchasePrice = Number(value.PurchasePrice.toFixed(2));
-            var amount = Number($(`#${stringCodeWallet} td:nth-child(3)`).text());
+            var amount = Number($('#' + stringCodeWallet + 'td:nth-child(3)').text());
+            // var amount = Number($(`#${stringCodeWallet} td:nth-child(3)`).text());
             if (code === 'RUB' || code === 'CZK') {
                 amount = amount/100;
             }
             var result = amount * roundedPurchasePrice;
             result = result.toFixed(2);
 
-            $(`#${stringCodeCurrency} td:nth-child(3)`).text(roundedSellPrice);
+            $('#' + stringCodeCurrency + 'td:nth-child(3)').text(roundedSellPrice);
+            // $(`#${stringCodeCurrency} td:nth-child(3)`).text(roundedSellPrice);
             $(`#${stringCodeWallet} td:nth-child(2)`).text(roundedPurchasePrice);
             $(`#${stringCodeWallet} td:nth-child(4)`).text(result);
 
