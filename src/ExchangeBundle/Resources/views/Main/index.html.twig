@@ -1,0 +1,170 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+    Exchange
+{% endblock %}
+{% block container %}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-info">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title pull-left">Currencies</h3>
+                    <span class="time-info pull-right" style="color: black"></span>
+                </div>
+                <div class="panel-body" id="currencyBody">
+                    {% if is_granted('ROLE_USER') %}
+                        <table class="table table-striped table-hover" style="text-align: center">
+                            <thead class="text-info">
+                            <tr>
+                                <th style="text-align: center">Currency</th>
+                                <th style="text-align: center">Unit</th>
+                                <th style="text-align: center">Value</th>
+                                <th style="text-align: center">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr id="gbpCurrency">
+                                <td>GBP</td>
+                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="eurCurrency">
+                                <td>EUR</td>
+                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="usdCurrency">
+                                <td>USD</td>
+                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="czkCurrency">
+                                <td>CZK</td>
+                                <td>100</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="rubCurrency">
+                                <td>RUB</td>
+                                <td>100</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="chfCurrency">
+                                <td>CHF</td>
+                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>
+                            Please login to see this content.
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-info">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title pull-left">My wallet</h3>
+                    <a href="{{ path('wallet') }}" class="pull-right" style="color: black">
+                        <span class="glyphicon glyphicon-cog"></span> Add funds</a>
+                </div>
+                <div class="panel-body" id="walletBody">
+                    {% if is_granted('ROLE_USER') %}
+                        <table class="table table-striped table-hover" style="text-align: center">
+                            <thead class="text-info">
+                            <tr>
+                                <th style="text-align: center">Currency</th>
+                                <th style="text-align: center">Unit price</th>
+                                <th style="text-align: center">Amount</th>
+                                <th style="text-align: center">Value</th>
+                                <th style="text-align: center">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr id="gbpWallet">
+                                <td>GBP</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="eurWallet">
+                                <td>EUR</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="usdWallet">
+                                <td>USD</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="czkWallet">
+                                <td>CZK</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="rubWallet">
+                                <td>RUB</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="chfWallet">
+                                <td>CHF</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-info" style="font-size: large; text-align: center">
+                            Available PLN: <span id="pln"></span>
+                        </p>
+                    {% else %}
+                        <p>
+                            Please login to see this content.
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" style="text-align: center"></h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {% if (is_granted('ROLE_USER')) %}
+        <script src="{{ asset('js/wallet.js') }}"></script>
+    {% endif %}
+{% endblock %}

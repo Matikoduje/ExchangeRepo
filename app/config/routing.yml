@@ -2,4 +2,5 @@ exchange:
     resource: "@ExchangeBundle/Controller/"
     type:     annotation
     prefix:   /
-
+logout:
+    path: /logout

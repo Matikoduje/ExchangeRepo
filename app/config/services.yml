@@ -14,4 +14,18 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
+    app.doctrine.hash_password_listener:
+        class: ExchangeBundle\Doctrine\HashPasswordListener
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber }
 
+    app.security.login_form_authenticator:
+        class: ExchangeBundle\Security\LoginTypeAuthenticator
+        autowire: true
+
+    app.wallet_service:
+        class: ExchangeBundle\Services\WalletService
+
+    app.check_service:
+        class: ExchangeBundle\Services\CheckApiService

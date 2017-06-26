@@ -2,12 +2,54 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+        <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <nav id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#myNavigationBar">
+                    <span class="sr-only">Rozwiń menu
+                    </span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('index') }}"><span><b>Exchange</b></span> </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavigationBar">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if is_granted('ROLE_USER') %}
+                        <li><a href="#">Logged in as {{ app.session.get('_security.last_username') }}</a></li>
+                        <li><a href="{{ path('editUser') }}"><span class="glyphicon glyphicon-cog"></span> Edit</a></li>
+                        <li><a href="{{ logout_path() }}"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
+                    {% else %}
+                        <li><a href="{{ path('register') }}"><span class="glyphicon glyphicon-user"></span>  Register</a></li>
+                        <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" style="height: 80px"></div>
+        {% block container %}{% endblock %}
+    </div>
+    <div id=footer class="container">
+        <hr>
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-success">Copyright &copy; Mateusz Stalmach 2017</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

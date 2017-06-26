@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+{% form_theme formEmail 'bootstrap_3_horizontal_layout.html.twig' %}
+{% form_theme formPassword 'bootstrap_3_horizontal_layout.html.twig' %}
+{% block title %}
+    Change user profile
+{% endblock %}
+{% block container %}
+    <div class="col-lg-5">
+        {{ form_start(formEmail) }}
+        {{ form_widget(formEmail) }}
+        {{ form_end(formEmail) }}
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-5">
+        {{ form_start(formPassword) }}
+        {{ form_widget(formPassword) }}
+        {{ form_end(formPassword) }}
+    </div>
+{% endblock %}
