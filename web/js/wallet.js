@@ -152,7 +152,7 @@ $(document).ready(function () {
         if (currency === 'CZK' || currency === 'RUB') {
             unit = '[1 = 100]';
         } else {
-            unit = '[1 = 100]';
+            unit = '[1 = 1]';
         }
 
         var sellInput = $(`<div class="form-group"><label for="currency">How much ${currency} ${unit} you want to sell: </label>` +
@@ -223,7 +223,7 @@ $(document).ready(function () {
         if (currency === 'CZK' || currency === 'RUB') {
             unit = '[1 = 100]';
         } else {
-            unit = '[1 = 100]';
+            unit = '[1 = 1]';
         }
 
         var buyInput = $(`<div class="form-group"><label for="currency">How much ${currency} ${unit} you want to buy: </label>` +
