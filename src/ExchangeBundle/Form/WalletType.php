@@ -22,10 +22,10 @@ class WalletType extends AbstractType
                 'label' => 'USD'
             ))
             ->add('czechKoruna', NumberType::class, array(
-                'label' => 'CZK'
+                'label' => 'CZK [1 = 100CZK]'
             ))
             ->add('russianRuble', NumberType::class, array(
-                'label' => 'RUB'
+                'label' => 'RUB [1 = 100RUB]'
             ))
             ->add('swissFranc', NumberType::class, array(
                 'label' => 'CHF'

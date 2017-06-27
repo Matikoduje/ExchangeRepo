@@ -148,7 +148,7 @@ $(document).ready(function () {
         var modal = $('.modal-body');
         modal.empty();
 
-        var sellInput = $(`<div class="form-group"><label for="currency">How much ${currency} you want to sell: </label>` +
+        var sellInput = $(`<div class="form-group"><label for="currency">How much ${currency} unit you want to sell: </label>` +
             `<input type="number" value=1 name=${currency} min=1 max=${amount} class="form-control" id="currency"></div>`);
 
         var modalContent = $(`<div><p>Current ${currency} sell value: <span class="sellSpan">${sellValue}</span> PLN</p><p>Transaction value: <span class="transactionValue">${sellValue}</span> PLN</p><p>Account balance after transaction <span class="accountBalance">${accountBalance}</span> PLN</p></div>`);
@@ -212,7 +212,7 @@ $(document).ready(function () {
         var modal = $('.modal-body');
         modal.empty();
 
-        var buyInput = $(`<div class="form-group"><label for="currency">How much ${currency} you want to buy: </label>` +
+        var buyInput = $(`<div class="form-group"><label for="currency">How much ${currency} unit you want to buy: </label>` +
             `<input type="number" value=1 name=${currency} min=1 max=${maximumBuyCurrency} class="form-control" id="currency"></div>`);
 
         var modalContent = $(`<div><p>Current ${currency} buy value: <span class="buySpan">${buyValue}</span> PLN</p><p>Transaction value: <span class="transactionValue">${buyValue}</span> PLN</p><p>Account balance after transaction <span class="accountBalance">${accountBalance}</span> PLN</p></div>`);
