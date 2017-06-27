@@ -186,6 +186,8 @@ class ApiController extends Controller
             'msg' => 'OK'
         );
 
+        $flag = true;
+
         $data = file_get_contents('http://webtask.future-processing.com:8068/currencies');
         $data = json_decode($data, true);
 
@@ -198,10 +200,26 @@ class ApiController extends Controller
             $session->set('counter', $x++);
         }
 
-        if ($session->get('counter') % 2 != 0) {
-            $session->set('dataFromRequest', $data);
-        } else {
-            $session->set('dataFromRequest2', $data);
+        if ($session->has('dataFromRequest')) {
+            $ses1 = $session->get('dataFromRequest');
+
+            if ($ses1['publicationDate'] == $data['publicationDate']) {
+                $flag = false;
+            } else if ($session->has('dataFromRequest2')) {
+                $ses2 = $session->get('dataFromRequest2');
+
+                if ($ses2['publicationDate'] == $data['publicationDate']) {
+                    $flag = false;
+                }
+            }
+        }
+
+        if ($flag == true) {
+            if ($session->get('counter') % 2 != 0) {
+                $session->set('dataFromRequest', $data);
+            } else {
+                $session->set('dataFromRequest2', $data);
+            }
         }
 
         $response = new JsonResponse($response, Response::HTTP_OK);

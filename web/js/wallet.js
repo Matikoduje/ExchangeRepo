@@ -112,7 +112,6 @@ $(document).ready(function () {
             });
 
             requestSave.done(function () {
-                console.log('dada');
                 var data = JSON.parse(msg.data);
                 currenciesData(data);
             });

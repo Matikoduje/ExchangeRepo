@@ -2,6 +2,7 @@
 namespace ExchangeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="ExchangeBundle\Repository\CantorRepository")
@@ -18,31 +19,61 @@ class Cantor
 
     /**
      * @ORM\Column(name="GBP", type="integer")
+     * @Assert\GreaterThanOrEqual(
+     *     value = 0,
+     *     message="This value should be greater than or equal to 0."
+     * )
+     * @Assert\NotBlank(message="This value should not be blank.")
      */
     private $britishPound;
 
     /**
      * @ORM\Column(name="EUR", type="integer")
+     * @Assert\GreaterThanOrEqual(
+     *     value = 0,
+     *     message="This value should be greater than or equal to 0."
+     * )
+     * @Assert\NotBlank(message="This value should not be blank.")
      */
     private $euro;
 
     /**
      * @ORM\Column(name="USD", type="integer")
+     * @Assert\GreaterThanOrEqual(
+     *     value = 0,
+     *     message="This value should be greater than or equal to 0."
+     * )
+     * @Assert\NotBlank(message="This value should not be blank.")
      */
     private $uSDollar;
 
     /**
      * @ORM\Column(name="CZK", type="integer")
+     * @Assert\GreaterThanOrEqual(
+     *     value = 0,
+     *     message="This value should be greater than or equal to 0."
+     * )
+     * @Assert\NotBlank(message="This value should not be blank.")
      */
     private $czechKoruna;
 
     /**
      * @ORM\Column(name="CHF", type="integer")
+     * @Assert\GreaterThanOrEqual(
+     *     value = 0,
+     *     message="This value should be greater than or equal to 0."
+     * )
+     * @Assert\NotBlank(message="This value should not be blank.")
      */
     private $swissFranc;
 
     /**
      * @ORM\Column(name="RUB", type="integer")
+     * @Assert\GreaterThanOrEqual(
+     *     value = 0,
+     *     message="This value should be greater than or equal to 0."
+     * )
+     * @Assert\NotBlank(message="This value should not be blank.")
      */
     private $russianRuble;
 

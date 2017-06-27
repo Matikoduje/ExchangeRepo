@@ -3,6 +3,7 @@ namespace ExchangeBundle\Controller;
 
 use ExchangeBundle\Entity\User;
 use ExchangeBundle\Entity\Wallet;
+use ExchangeBundle\Form\CantorType;
 use ExchangeBundle\Form\ChangeEmailType;
 use ExchangeBundle\Form\ChangePasswordType;
 use ExchangeBundle\Form\LoginType;
@@ -87,8 +88,33 @@ class MainController extends Controller
             return $this->redirectToRoute('index');
         }
 
-        return $this->render('ExchangeBundle:Main:register.html.twig', array(
+        return $this->render('ExchangeBundle:Main:wallet.html.twig', array(
             'form' => $formWalletType->createView()
+        ));
+    }
+
+    /**
+     * @Route("/exchange", name="exchange")
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+    public function createExchangeAction(Request $request)
+    {
+        $cantor = $this->getDoctrine()->
+            getRepository('ExchangeBundle:Cantor')->find(1);
+        $formCantorType = $this->createForm(CantorType::class, $cantor);
+        $formCantorType->handleRequest($request);
+
+        if ($formCantorType->isSubmitted() && $formCantorType->isValid()) {
+            $post = $formCantorType->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $post->checkIsActive();
+            $entityManager->persist($post);
+            $entityManager->flush();
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('ExchangeBundle:Main:exchange.html.twig', array(
+            'form' => $formCantorType->createView()
         ));
     }
 
@@ -123,4 +149,5 @@ class MainController extends Controller
             'formPassword' => $formPassword->createView()
         ));
     }
+    
 }
