@@ -26,6 +26,9 @@
                     {% if is_granted('ROLE_USER') %}
                         <li><a href="#">Logged in as {{ app.session.get('_security.last_username') }}</a></li>
                         <li><a href="{{ path('editUser') }}"><span class="glyphicon glyphicon-cog"></span> Edit</a></li>
+                    {%if is_granted('ROLE_ADMIN')%}
+                        <li><a href="{{ path('exchange') }}"><span class="glyphicon glyphicon-cog"></span>  Edit Exchange</a></li>
+                    {% endif %}
                         <li><a href="{{ logout_path() }}"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
                     {% else %}
                         <li><a href="{{ path('register') }}"><span class="glyphicon glyphicon-user"></span>  Register</a></li>

@@ -107,7 +107,6 @@ class MainController extends Controller
         if ($formCantorType->isSubmitted() && $formCantorType->isValid()) {
             $post = $formCantorType->getData();
             $entityManager = $this->getDoctrine()->getManager();
-            $post->checkIsActive();
             $entityManager->persist($post);
             $entityManager->flush();
             return $this->redirectToRoute('index');
