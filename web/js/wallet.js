@@ -181,7 +181,7 @@ $(document).ready(function () {
             $('.accountBalance').text(accountBalance.toFixed(2));
         });
 
-        body.on('click', '.sellButton', function () {
+        body.one('click', '.sellButton', function () {
 
             var sellRequest = $.ajax({
                 url: "api/sell",
@@ -252,7 +252,7 @@ $(document).ready(function () {
             $('.accountBalance').text(accountBalance.toFixed(2));
         });
 
-        body.on('click', '.buyButton', function () {
+        body.one('click', '.buyButton', function () {
 
             var sellRequest = $.ajax({
                 url: "api/buy",
